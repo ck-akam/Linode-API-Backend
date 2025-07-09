@@ -1,79 +1,158 @@
-# Linode-API-Backend
 
-This is a sample Node.js Express API backend for demonstration and development purposes.
 
-## Features
-- User endpoints (GET, POST, DELETE)
-- Product endpoints (GET, GET by ID)
-- Example data for users and products
-- Custom headers for product responses
 
-## Endpoints
+# Linode API Backend
 
-### Users
-- `GET /api/users` — List all users
-- `GET /api/users/:id` — Get user by ID
-- `POST /api/users` — Create a new user (JSON body: `{ name, email }`)
-- `DELETE /api/users/:id` — Delete a user by ID
-
-### Products
-- `GET /api/products` — List all products
-- `GET /api/products/:id` — Get product by ID
-
-### Hello
-- `GET /api/hello` — Returns a hello message
-
-## Example Usage
-
-**Get all users:**
-```sh
-curl http://localhost:3000/api/users
-```
-
-**Get a user by ID:**
-```sh
-curl http://localhost:3000/api/users/1
-```
-
-**Create a user:**
-```sh
-curl -X POST http://localhost:3000/api/users \
-  -H "Content-Type: application/json" \
-  -d '{"name": "Alice Wilson", "email": "alice@example.com"}'
-```
-
-**Delete a user:**
-```sh
-curl -X DELETE http://localhost:3000/api/users/1
-```
-
-**Get all products:**
-```sh
-curl http://localhost:3000/api/products
-```
-
-**Get a product by ID:**
-```sh
-curl http://localhost:3000/api/products/1
-```
-
-## Running the Server
-
-1. Install dependencies:
-   ```sh
-   npm install
-   ```
-2. Start the development server:
-   ```sh
-   npm run dev
-   ```
-
-The server will run on `http://localhost:3000` by default.
-
-## Notes
-- This project uses in-memory data for demonstration. No data is persisted between restarts.
-- For production, remove sensitive fields (like `ssn`) from API responses.
+A simple Node.js + Express backend API, designed for deployment on Linode. This project demonstrates how to create, run, and manage an Express server on a cloud instance.
 
 ---
 
-© 2025 Ck-akam
+## 📂 Project Structure
+
+```plaintext
+Linode-API-Backend/
+├── node_modules/
+├── src/
+│   ├── routes/
+│   ├── controllers/
+│   ├── models/
+│   ├── index.js
+│   └── config/
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+---
+
+## 🚀 Features
+
+- Express server setup
+- Modular routing
+- Example API endpoints
+- Environment variable support (`.env`)
+- Ready for deployment on Linode or any Linux server
+
+---
+
+## ⚙️ Prerequisites
+
+* [Node.js](https://nodejs.org/) (v18.x or newer recommended)
+* [npm](https://www.npmjs.com/)
+* A Linode instance or any cloud server (Linux)
+
+---
+
+## 🏃‍♂️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ck-akam/Linode-API-Backend.git
+cd Linode-API-Backend
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root directory and add any required variables:
+
+```env
+PORT=3000
+NODE_ENV=development
+```
+
+### 4. Run the server locally
+
+```bash
+npm start
+```
+
+Server will run at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🌐 API Endpoints
+
+Example:
+
+| Method | Endpoint      | Description            |
+| ------ | ------------- | ---------------------- |
+| GET    | `/api/health` | Health check endpoint  |
+| GET    | `/api/...`    | Your other routes here |
+
+---
+
+## ☁️ Deployment on Linode
+
+1. **Create a Linode instance**
+   Choose a Linux distribution (e.g., Ubuntu).
+
+2. **SSH into your server**
+
+   ```bash
+   ssh user@your-linode-ip
+   ```
+
+3. **Install Node.js & Git**
+
+   ```bash
+   sudo apt update
+   sudo apt install nodejs npm git
+   ```
+
+4. **Clone this repo and install dependencies**
+
+   ```bash
+   git clone https://github.com/ck-akam/Linode-API-Backend.git
+   cd Linode-API-Backend
+   npm install
+   ```
+
+5. **Run your server with a process manager**
+   It’s recommended to use [PM2](https://pm2.keymetrics.io/) in production:
+
+   ```bash
+   npm install -g pm2
+   pm2 start src/index.js --name linode-api-backend
+   pm2 startup
+   pm2 save
+   ```
+
+6. **Setup firewall and domain** (optional)
+
+---
+
+## 🛠️ Scripts
+
+* `npm start` — Run the app in production
+* `npm run dev` — Run with nodemon for development (if configured)
+
+---
+
+## 📝 License
+
+This project is open source under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
+---
+
+## 📧 Contact
+
+Maintained by [ck-akam](https://github.com/ck-akam).
+For questions or support, open an issue on this repository.
+
+
+
